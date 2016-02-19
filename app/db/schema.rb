@@ -11,45 +11,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160218232623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "community", force: true do |t|
-    t.string "name", limit: nil
-    t.string "city", limit: nil
+  create_table "communities", force: true do |t|
+    t.string   "name"
+    t.string   "city"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "item", force: true do |t|
-    t.string  "name",        limit: nil
-    t.text    "description"
-    t.string  "picture_url", limit: nil
-    t.integer "user_id"
+  create_table "items", force: true do |t|
+    t.string   "name"
+    t.string   "picture_url"
+    t.string   "description"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "like", force: true do |t|
-    t.integer "item_offered_id"
-    t.integer "item_like_id"
+  create_table "likes", force: true do |t|
+    t.integer  "item_offered_id"
+    t.integer  "item_like_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "location", force: true do |t|
-    t.integer "community_id"
-    t.decimal "latitude"
-    t.decimal "longitude"
+  create_table "locations", force: true do |t|
+    t.integer  "community_id"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "message", force: true do |t|
-    t.text    "text"
-    t.integer "user_sender_id"
-    t.integer "user_receiver_id"
+  create_table "messages", force: true do |t|
+    t.text     "text"
+    t.integer  "user_sender_id"
+    t.integer  "user_receiver_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "user", force: true do |t|
-    t.string "name",                limit: nil
-    t.string "email",               limit: nil
-    t.string "picture_profile_url", limit: nil
-    t.text   "location_id"
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "picture_profile_url"
+    t.integer  "location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
