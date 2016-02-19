@@ -1,0 +1,15 @@
+<%= form_for @item, :html => {:multipart => true} do |f| %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.file_field :picture_url %>
+  </p>
+  <p>
+    <%= f.label :remote_image_url, "or image URL" %><br />
+    <%= f.text_field :remote_picture_url_url %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
