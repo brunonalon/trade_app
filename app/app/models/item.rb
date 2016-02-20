@@ -4,4 +4,5 @@ class Item < ActiveRecord::Base
   has_many :like, foreign_key: 'item_like_id', :class_name => 'Like'
 
   mount_uploader :picture_url, ImageUploader
+
 end
