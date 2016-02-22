@@ -5,4 +5,13 @@ class Item < ActiveRecord::Base
 
   mount_uploader :picture_url, ImageUploader
 
+  def get_match_items
+    match_items = []
+    likes = self.offered.all
+    likes.each {|like|
+      item_liked = like.like
+      match_items << item_liked unless item_liked.offered.where('item_like_id = ?', self.id).empty?
+    }
+    match_items
+  end
 end
