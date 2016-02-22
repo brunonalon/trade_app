@@ -14,4 +14,12 @@ class Item < ActiveRecord::Base
     }
     match_items
   end
+
+  def get_all_items_that_like_me
+    items = []
+    self.like.each{|like|
+      items << like.offered
+    }
+    items
+  end
 end
