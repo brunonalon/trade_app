@@ -5,11 +5,12 @@ class User < ActiveRecord::Base
   belongs_to :location
 
   def get_all_user_liked_items
-    liked_items = []
-    self.items.each{|item|
-      liked_items << item unless item.like.empty?
-    }
-    liked_items
+    # liked_items = []
+    # self.items.each{|item|
+    #   liked_items << item unless item.like.empty?
+    # }
+    # liked_items
+    items = Item.where('item_offered_id = ?', ).joins('JOIN likes ON likes.item_like_id = items.id')
   end
 
   def get_all_messages_by_user(user)
