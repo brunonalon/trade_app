@@ -1,4 +1,4 @@
-var items = ['img/pane/pane1.jpg', 'img/pane/pane2.jpg', 'img/pane/pane3.jpg', 'img/pane/pane4.jpg', 'img/pane/pane5.jpg'];
+var items = ['/images/pane1.jpg', 'pane2.jpg', 'img/pane/pane3.jpg', 'img/pane/pane4.jpg', 'img/pane/pane5.jpg'];
 var imgCounter = 1;
 function swipedetect(el, callback){
 
@@ -53,6 +53,7 @@ window.addEventListener('load', function(){
   var el = document.getElementById('touchsurface2');
   var inner = document.getElementById('inner');
   var hidetimer = null;
+
 
   swipedetect(el, function(swipedir){
 

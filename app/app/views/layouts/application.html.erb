@@ -1,13 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>App</title>
+  <title>Rutabaga</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <section class="hero is-info is-left is-bold">
+    <div class="hero-content">
+      <div class="container">
+        <p class="title">
+          BINDER
+        </p>
+        <p class="subtitle">
+          Trade Stuff, locally and fast.
+        </p>
+      </div>
+    </div>
 
+    <div class="hero-footer">
+      <nav class="tabs is-boxed">
+        <div class="container">
+          <ul>
+            <li>
+              <a href="/documentation/overview/">Find Stuff</a>
+            </li>
+            <li>
+              <a href="/documentation/modifiers/syntax">My Items</a>
+            </li>
+            <li>
+              <a href="/documentation/grid/">My Matches</a>
+            </li>
+            <li class="is-active">
+              <a href="/documentation/navbar/">My Profile</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </section>
 <%= yield %>
 
 </body>
