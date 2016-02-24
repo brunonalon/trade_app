@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218232623) do
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20160223031026) do
+=======
+ActiveRecord::Schema.define(version: 20160219221644) do
+>>>>>>> picture-upload
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +25,11 @@ ActiveRecord::Schema.define(version: 20160218232623) do
     t.string   "city"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "dislikes", force: true do |t|
+    t.integer "user_id"
+    t.integer "item_id"
   end
 
   create_table "items", force: true do |t|
@@ -33,18 +42,8 @@ ActiveRecord::Schema.define(version: 20160218232623) do
   end
 
   create_table "likes", force: true do |t|
-    t.integer  "item_offered_id"
-    t.integer  "item_like_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "locations", force: true do |t|
-    t.integer  "community_id"
-    t.decimal  "latitude"
-    t.decimal  "longitude"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "user_id"
+    t.integer "item_id"
   end
 
   create_table "messages", force: true do |t|
@@ -59,9 +58,11 @@ ActiveRecord::Schema.define(version: 20160218232623) do
     t.string   "name"
     t.string   "email"
     t.string   "picture_profile_url"
-    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "uid"
+    t.float    "longitude"
+    t.float    "latitude"
   end
 
 end
