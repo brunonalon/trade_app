@@ -6,11 +6,11 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to "item"
+      redirect_to items_path
     end
   end
 
   def item_params
-    params.require(:item).permit(:name, :picture_url)
+    params.require(:item).permit(:name, :picture_url, :description, :user_id, :remote_picture_url_url)
   end
 end
