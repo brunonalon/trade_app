@@ -7,16 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <section class="hero is-info is-left is-bold">
-    <div class="hero-content">
-      <div class="container">
-        <p class="title">
-          BINDER
-        </p>
-        <p class="subtitle">
-          Trade Stuff, locally and fast.
-        </p>
-      </div>
+  <section class="hero is-info is-left is-bold ">
+    <div class="hero-header is-danger">
+      <header class="header">
+        <div class="container">
+          <div class="header-left">
+            <p class="title">
+              BINDER
+            </p>
+            <p class="subtitle">
+              Trade Stuff, locally and fast.
+            </p>
+          </div>
+          <div class="header-right header-menu">
+            <% if current_user %>
+            Signed in as <strong><%= current_user.name %></strong>!
+            <%= link_to "Sign out", signout_path, id: "sign_out" %>
+            <% else %>
+            <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+            <% end %>
+          </div>
+        </div>
+      </header>
     </div>
 
     <div class="hero-footer">
@@ -24,7 +36,7 @@
         <div class="container">
           <ul>
             <li>
-              <a href="/documentation/overview/">Find Stuff</a>
+              <a href="swipe/findstuff">Find Stuff</a>
             </li>
             <li>
               <a href="/documentation/modifiers/syntax">My Items</a>
@@ -42,16 +54,9 @@
   </section>
 
 
-<div>
-  <% if current_user %>
-    Signed in as <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-  <% end %>
-</div>
 
-<%= yield %>
+
+  <%= yield %>
 
 </body>
 </html>

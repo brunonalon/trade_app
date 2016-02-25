@@ -1,21 +1,21 @@
-#tinderslide {
+#card-status {
   position: relative;
   background: #fff;
   width: 95%;
   height: 100%;
 }
 
-
+.animate { transition: transform 0.3s ease-out; }
 
 /* Like & dislike badge images */
-#tinderslide .like,
-#tinderslide .dislike {
-  background: url("../img/liked.png") no-repeat scroll 0 0;
-  opacity: 0;
+ .like,
+ .dislike {
+  background: url("/images/liked.png") no-repeat scroll 0 0;
+  opacity: 1;
   height: 80px;
   position: absolute;
   width: 170px;
-  left: 45px;
+  left: 215px;
   top:40px;
   z-index: 1;
   overflow: hidden;
@@ -24,14 +24,14 @@
   transition: all 100ms ease-in-out;
 }
 
-#tinderslide .dislike {
-  right: 45px;
+ .dislike {
+  right: 215px;
   left: auto;
-  background: url("../img/nope.png") no-repeat scroll 0 0;
+  background: url("/images/nope.png") no-repeat scroll 0 0;
 }
 
 /* Image container */
-#tinderslide .img {
+.img {
   height: 90%;
   width: 100%;
   margin-bottom: 5px;
