@@ -97,12 +97,12 @@ $(document).ready(function() {
     }, false);
 
 
-    // function dislike() {
-    //   $('#itemImage').animate({ opacity: 1, transform: 'rotate(180)' }, 'slow');
-    // }
-    //
-    // function like() {
-    //   $('#itemImage').animate({ opacity: 1, top: "-10px" }, 'slow');
-    // }
+    function dislike() {
+      $('#itemImage').animate({ opacity: 1, transform: 'rotate(180)' }, 'slow');
+    }
+
+    function like() {
+      $('#itemImage').animate({ opacity: 1, top: "-10px" }, 'slow');
+    }
   }
 });
