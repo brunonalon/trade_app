@@ -67,7 +67,6 @@ $(document).ready(function() {
               right: '1000px',
               opacity: '0.25',
               easing: 'easeOutExpo'
-
             },1500);
             $("#inner").animate({
               opacity: '1.0',
@@ -80,7 +79,6 @@ $(document).ready(function() {
               left: '1000px',
               opacity: '0.25',
               easing: 'easeOutExpo'
-
             },1500);
             $("#inner").animate({
               opacity: '1.0',
