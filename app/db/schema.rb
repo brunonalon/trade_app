@@ -11,11 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160224212947) do
+=======
+ActiveRecord::Schema.define(version: 20160224175306) do
+>>>>>>> origin/items-features
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "dislikes", force: true do |t|
     t.integer  "item_offered_id"
     t.integer  "item_disliked_id"
@@ -23,6 +28,8 @@ ActiveRecord::Schema.define(version: 20160224212947) do
     t.datetime "updated_at"
   end
 
+=======
+>>>>>>> origin/items-features
   create_table "items", force: true do |t|
     t.string   "name"
     t.string   "picture_url"
@@ -34,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160224212947) do
 
   create_table "likes", force: true do |t|
     t.integer  "item_offered_id"
+<<<<<<< HEAD
     t.integer  "item_liked_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -42,6 +50,9 @@ ActiveRecord::Schema.define(version: 20160224212947) do
   create_table "matches", force: true do |t|
     t.integer  "item_offered_id"
     t.integer  "item_liked_id"
+=======
+    t.integer  "item_like_id"
+>>>>>>> origin/items-features
     t.datetime "created_at"
     t.datetime "updated_at"
   end
