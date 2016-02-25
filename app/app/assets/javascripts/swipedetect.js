@@ -60,30 +60,35 @@ $(document).ready(function() {
       swipedetect(el, function(swipedir){
 
         if (swipedir != 'none'){
+          console.log(swipedir);
           clearTimeout(hidetimer);
           if (swipedir =='left'){
+
             $('.cardstatus').addClass('dislike');
             $("#inner").animate({
               right: '1000px',
               opacity: '0.25',
-              easing: 'easeOutExpo'
-            },1500);
+
+            },750);
+            console.log(swipedir + "2");
             $("#inner").animate({
               opacity: '1.0',
               right: '0px',
-            },1500);
+
+            },750);
           }
           if (swipedir =='right'){
             $('.cardstatus').addClass('like');
             $("#inner").animate({
               left: '1000px',
               opacity: '0.25',
-              easing: 'easeOutExpo'
-            },1500);
+
+            },750);
             $("#inner").animate({
               opacity: '1.0',
               left: '0px',
-            },1500);
+
+            },750);
 
           }
           setTimeout(function(){
@@ -91,18 +96,12 @@ $(document).ready(function() {
             $('#itemImage2').attr('src', items[imgCounter]);
             $('.cardstatus').removeClass('like').removeClass('dislike');
             imgCounter += 1;
-          }, 1500);
+          }, 750);
         }
       });
     }, false);
 
 
-    function dislike() {
-      $('#itemImage').animate({ opacity: 1, transform: 'rotate(180)' }, 'slow');
-    }
 
-    function like() {
-      $('#itemImage').animate({ opacity: 1, top: "-10px" }, 'slow');
-    }
   }
 });
