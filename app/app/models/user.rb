@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   geocoded_by :ip_address   # can also be an IP address
   after_validation :geocode
 
+
   def self.from_omniauth(auth)
     where(uid: auth.uid).first_or_create do |user|
       user.uid      = auth.uid
