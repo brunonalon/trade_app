@@ -63,10 +63,29 @@ $(document).ready(function() {
           clearTimeout(hidetimer);
           if (swipedir =='left'){
             $('.cardstatus').addClass('dislike');
+            $("#inner").animate({
+              right: '1000px',
+              opacity: '0.25',
+              easing: 'easeOutExpo'
 
+            },1500);
+            $("#inner").animate({
+              opacity: '1.0',
+              right: '0px',
+            },1500);
           }
           if (swipedir =='right'){
             $('.cardstatus').addClass('like');
+            $("#inner").animate({
+              left: '1000px',
+              opacity: '0.25',
+              easing: 'easeOutExpo'
+
+            },1500);
+            $("#inner").animate({
+              opacity: '1.0',
+              left: '0px',
+            },1500);
 
           }
           setTimeout(function(){
