@@ -4,8 +4,13 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+one:
+  name: "Bruno"
+  id: 1
+  latitude: 50.90961
+  longitude: -114.08423
+two:
+  name: "Chris"
+  id: 2
+  latitude: 51.04862
+  longitude: -114.07085

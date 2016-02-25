@@ -6,6 +6,7 @@ class Item < ActiveRecord::Base
   mount_uploader :picture_url, ImageUploader
 
   def get_all_item_matches
-    item_matches = self.matches.all
+    item_matches = Match.where("item_offered_id = ? or item_liked_id = ?", self.id, self.id)
+    item_matches
   end
 end

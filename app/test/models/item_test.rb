@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class ItemTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "Match Created!" do
+    @item1 = items(:one)
+    @item2 = items(:two)
+    @item1.get
+  end
 end

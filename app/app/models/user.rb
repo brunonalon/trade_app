@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def get_all_user_items
+    myItems = Item.where(:user_id=>self.id)
+    myItems
+  end
   # def get_all_user_liked_items
   #   # liked_items = []
   #   # self.items.each{|item|
