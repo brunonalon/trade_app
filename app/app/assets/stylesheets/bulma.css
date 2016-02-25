@@ -3210,7 +3210,6 @@ table th {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.1);
   max-width: 100%;
   position: relative;
-  width: 300px;
 }
 
 .card .media:not(:last-child) {
@@ -4843,4 +4842,3 @@ a.menu-block:hover {
 .footer a:not(.icon):hover {
   border-bottom-color: #1fc8db;
 }
-/*# sourceMappingURL=bulma.css.map */

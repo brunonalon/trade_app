@@ -1,5 +1,4 @@
 class Item < ActiveRecord::Base
-
   belongs_to :user, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :dislikes, dependent: :destroy

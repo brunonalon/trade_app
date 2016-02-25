@@ -10,6 +10,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    redirect_to items_path
+  end
+
   def item_params
     params.require(:item).permit(:name, :picture_url, :description, :user_id, :remote_picture_url_url)
   end
