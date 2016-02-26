@@ -5,9 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.from_omniauth(request.env["omniauth.auth"])
-    puts "CREATING USER"
-    puts request.location.city
+    @user = User.from_omniauth(request.env["omniauth.auth"])
     session[:user_id] = user.id
     redirect_to root_url
   end
