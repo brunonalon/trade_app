@@ -1,7 +1,8 @@
+var items = ['/images/pane1.jpg', '/images/pane2.jpg', '/images/pane3.jpg', '/images/pane4.jpg', '/images/pane5.jpg'];
+var imgCounter = 1;
+
 $(document).ready(function() {
   if ($('#touchsurface2').length){
-    var items = ['/images/pane1.jpg', '/images/pane2.jpg', '/images/pane3.jpg', '/images/pane4.jpg', '/images/pane5.jpg'];
-    var imgCounter = 1;
     function swipedetect(el, callback){
 
       var touchsurface = el,
@@ -52,57 +53,63 @@ $(document).ready(function() {
     }
 
     window.addEventListener('load', function(){
-      var el = document.getElementById('touchsurface2');
-      var inner = document.getElementById('inner');
+      var el = document.getElementById('itemImage');
       var hidetimer = null;
-
-
       swipedetect(el, function(swipedir){
-
-        if (swipedir != 'none'){
-          clearTimeout(hidetimer);
-          if (swipedir =='left'){
-            $('.cardstatus').addClass('dislike');
-            $("#inner").animate({
-              right: '1000px',
-              opacity: '0.25',
-              easing: 'easeOutExpo'
-            },1500);
-            $("#inner").animate({
-              opacity: '1.0',
-              right: '0px',
-            },1500);
-          }
-          if (swipedir =='right'){
-            $('.cardstatus').addClass('like');
-            $("#inner").animate({
-              left: '1000px',
-              opacity: '0.25',
-              easing: 'easeOutExpo'
-            },1500);
-            $("#inner").animate({
-              opacity: '1.0',
-              left: '0px',
-            },1500);
-
-          }
-          setTimeout(function(){
-            $('#itemImage').attr('src', items[imgCounter]);
-            $('#itemImage2').attr('src', items[imgCounter]);
-            $('.cardstatus').removeClass('like').removeClass('dislike');
-            imgCounter += 1;
-          }, 1500);
-        }
+        swipe(swipedir);
       });
     }, false);
 
-
-    function dislike() {
-      $('#itemImage').animate({ opacity: 1, transform: 'rotate(180)' }, 'slow');
-    }
-
-    function like() {
-      $('#itemImage').animate({ opacity: 1, top: "-10px" }, 'slow');
-    }
   }
+
+  $('#like').on('click', function(){
+    swipe('right');
+  });
+  $('#nope').on('click', function(){
+    swipe('left');
+  });
 });
+
+function swipe(swipedir){
+  if (swipedir != 'none'){
+    console.log(swipedir);
+    if (swipedir =='left'){
+
+      $('.cardstatus').addClass('dislike');
+      $("#inner").animate({
+        left: '-1000px',
+        opacity: '0.25',
+      },{
+        duration: 750,
+        complete: function() {
+          $("#inner").animate({
+            opacity: '1.0',
+            left: '0px',
+          },750);
+        }
+      });
+      console.log(swipedir + "2");
+    }
+    if (swipedir =='right'){
+      $('.cardstatus').addClass('like');
+      $("#inner").animate({
+        left: '1000px',
+        opacity: '0.25',
+      },{
+        complete: function() {
+          $("#inner").animate({
+            opacity: '1.0',
+            left: '0px',
+          },750);
+        },
+        duration: 750
+      });
+    }
+    setTimeout(function(){
+      $('#itemImage').attr('src', items[imgCounter]);
+      $('#itemImage2').attr('src', items[imgCounter]);
+      $('.cardstatus').removeClass('like').removeClass('dislike');
+      imgCounter += 1;
+    }, 750);
+  }
+}
