@@ -20,15 +20,13 @@ class User < ActiveRecord::Base
       user.save
     end
   end
-<<<<<<< HEAD
+
   # gets all the users items up for trade
   def get_all_user_items
     myItems = Item.where(:user_id=>self.id)
     myItems
   end
-=======
 
->>>>>>> login-feature
 
   def get_all_messages_by_user(user)
     user1_id = self.id
