@@ -108,6 +108,9 @@
 .card-image > img {
   position: relative;
 }
+.container {
+  margin-top: 10px;
+}
 
 #touchsurface2 {
   overflow: hidden;
@@ -115,4 +118,9 @@
 
 #nope {
   float: right;
+}
+
+.subtitle.my-subtitle {
+  margin-top: 8px;
+  margin-left: 5px;
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Binder</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -12,13 +13,14 @@
       <header class="header">
         <div class="container">
           <div class="header-left">
-            <p class="title">
-              BINDER
-            </p>
-            <p class="subtitle">
-              Trade Stuff, locally and fast.
-            </p>
+            <h1 class="title">BINDER</h1>
+            <h2 class="subtitle my-subtitle">Trade Stuff, locally and fast.</h2>
           </div>
+          <span id="header-toggle" class="header-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
           <div class="header-right header-menu">
             <% if current_user %>
             Signed in as <strong><%= current_user.name %></strong>!
@@ -35,16 +37,13 @@
       <nav class="tabs is-boxed">
         <div class="container">
           <ul>
-            <li>
-              <a href="swipe/findstuff">Find Stuff</a>
+            <li class="tab1">
+              <a href="/swipe/findstuff">Find Stuff</a>
             </li>
-            <li>
-              <a href="/items">My Items</a>
+            <li class="tab2">
+              <a href="/documentation/grid/">My Trades</a>
             </li>
-            <li>
-              <a href="/documentation/grid/">My Matches</a>
-            </li>
-            <li class="is-active">
+            <li class="tab3">
               <a href="/documentation/navbar/">My Profile</a>
             </li>
           </ul>
