@@ -11,13 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20160224212947) do
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
 
   create_table "dislikes", force: true do |t|
     t.integer  "item_offered_id"
@@ -45,6 +42,8 @@ ActiveRecord::Schema.define(version: 20160224212947) do
   create_table "matches", force: true do |t|
     t.integer  "item_offered_id"
     t.integer  "item_liked_id"
+    t.integer  "user_offered_id"
+    t.integer  "user_liked_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
