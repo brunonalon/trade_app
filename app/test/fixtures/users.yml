@@ -14,3 +14,8 @@ two:
   id: 2
   latitude: 51.04862
   longitude: -114.07085
+three:
+  name: "Adam"
+  id: 3
+  latitude: 51.04862
+  longitude: -115
