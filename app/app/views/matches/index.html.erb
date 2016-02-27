@@ -7,7 +7,7 @@
   <title>Touch Slider</title>
   <script type="text/javascript">
   $( document ).ready(function() {
-    $(".tab1").addClass('is-active');
+    $(".tab2").addClass('is-active');
   });
   </script>
 </head>
@@ -32,40 +32,47 @@
           </div>
         </nav>
       </div>
-      <div class="column is-auto" id="touchsurface2">
-        <div class="media">
-          <div class="media-left">
-            <figure class="image is-64x64">
-              <img id="itemImage2" src="/images/pane1.jpg" alt="Image">
-            </figure>
-          </div>
-          <div class="media-content">
-            <p class="title is-5">ITEM SUBJECT/SHORT DESCRIPTION</p>
-          </div>
-        </div>
-        <div class="card is-fullwidth" id="inner">
-          <div class="cardstatus">
-
-          </div>
-          <figure class="card-image is-4x3">
-            <img id="itemImage" src="/images/pane1.jpg" alt="http://placehold.it/300x225">
-          </figure>
-          <div class="card-content">
-
-            <div class="content">
-              <div class="columns">
-                <div class="column is-half is-offset-quarter">
-                  <a id="nope" class="button is-danger is-large"><i class="fa fa-times"></i>NOPE</a>
-                  <a id="like" class="button is-success is-large"><i class="fa fa-check"></i>LIKE</a>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
+      <div class="column is-auto">
+        <p class="control">
+          <label class="label">Name</label>
+          <input class="input" type="text" placeholder="Text input">
+        </p>
+        <p class="control">
+          <label class="label">Subject</label>
+          <span class="select">
+            <select>
+              <option>Select dropdown</option>
+              <option>With options</option>
+            </select>
+          </span>
+        </p>
+        <p class="control">
+          <label class="label">Message</label>
+          <textarea class="textarea" placeholder="Textarea"></textarea>
+        </p>
+        <p class="control">
+          <label class="checkbox">
+            <input type="checkbox">
+            Remember me
+          </label>
+        </p>
+        <p class="control">
+          <label class="radio">
+            <input type="radio" name="question">
+            Yes
+          </label>
+          <label class="radio">
+            <input type="radio" name="question">
+            No
+          </label>
+        </p>
+        <p class="control">
+          <button class="button is-primary">Submit</button>
+          <button class="button">Cancel</button>
+        </p>
       </div>
     </div>
+  </div>
 
-
-  </body>
-  </html>
+</body>
+</html>
