@@ -1,6 +1,13 @@
 class ItemsController < ApplicationController
+  respond_to :json, :html
   def index
-    @item = Item.new
+    if current_user
+      @item = current_user.items
+      @item = Item.new unless @item
+      respond_with(@item )
+    else
+      redirect_to root_url
+    end
   end
 
   def create

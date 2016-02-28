@@ -4,10 +4,7 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
   resources :sessions, only: [:create, :destroy]
-
-  resources :users
-
-
+  resources :users, only: [:new, :create, :destroy]
   root to: 'login#index'
   get 'login/index'
 
