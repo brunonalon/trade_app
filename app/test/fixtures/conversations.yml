@@ -4,15 +4,8 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
-  id: 1
-  item_offered_id: 2
-  item_liked_id: 1
-  user_offered_id: 2
-  user_liked_id: 1
-two:
-  id: 2
-  item_offered_id: 1
-  item_liked_id: 3
-  user_offered_id: 1
-  user_liked_id: 3
+one: {}
+# column: value
+#
+two: {}
+#  column: value

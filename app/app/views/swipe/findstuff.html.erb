@@ -7,9 +7,9 @@
   <title>Touch Slider</title>
   <!-- <script type="text/javascript">
   $( document ).ready(function() {
-    $(".tab1").addClass('is-active');
-  });
-  </script> -->
+  $(".tab1").addClass('is-active');
+});
+</script> -->
 </head>
 <body style= "zoom: 1;">
   <div class="container">
@@ -19,12 +19,9 @@
           <p class="menu-heading">
             My Items
           </p>
-          <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-book"></i></span>bulma-website</a>
-          <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-book"></i></span>bulma</a>
-          <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-book"></i></span>marksheet</a>
-          <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-book"></i></span>jgthms.github.io</a>
-          <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-code-fork"></i></span>mojs</a>
-          <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-book"></i></span>grumpy-cat</a>
+          <%@items.each do |item|%>
+          <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-book"></i></span><%=item.name%></a>
+          <%end%>
           <div class="menu-block">
             <button class="button is-primary is-outlined is-fullwidth">
               Reset all filters

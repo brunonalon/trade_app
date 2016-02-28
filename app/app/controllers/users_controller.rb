@@ -13,10 +13,8 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     redirect_to root_url
   end
-
-
-   def index
-     # @item = Item.new
-     respond_with(@items = User.find(1).items)
-   end
+  def index
+    # @item = Item.new
+    respond_with(@items = User.find(1).items)
+  end
 end

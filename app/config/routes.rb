@@ -18,4 +18,7 @@ Rails.application.routes.draw do
   get 'items/index'
   get 'swipe/findstuff'
 
+  resources :conversations do
+    resources :messages
+  end
 end
