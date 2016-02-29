@@ -1,21 +1,60 @@
-<div class="ui segment">
-  <h3>Mailbox</h3>
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <title>Mailbox / Matches</title>
 
-  <div class="ui list">
-    <div class="item">
-      <% @conversations.each do |conversation| %>
-      <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-      <% if conversation.sender_id == current_user.id %>
-      <% recipient = User.find(conversation.recipient_id) %>
-      <% else %>
-      <% recipient = User.find(conversation.sender_id) %>
-      <% end %>
-      <%= link_to recipient.name, conversation_messages_path(conversation)%>
-      <% end %>
-      <% end %>
+  <script type="text/javascript">
+  $( document ).ready(function() {
+    $(".tab2").addClass('is-active');
+  });
+  </script>
+
+
+</head>
+
+<body>
+  <section>
+    <div class="container">
+      <h1 class="title">Mailbox</h1>
+      <div class="columns">
+        <div class="column">
+          <% @conversations.each do |conversation| %>
+          <div class="notification is-info">
+            <button class="delete"></button>
+
+          </div>
+
+          <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+          <% if conversation.sender_id == current_user.id %>
+          <% recipient = User.find(conversation.recipient_id) %>
+          <% else %>
+          <% recipient = User.find(conversation.sender_id) %>
+          <% end %>
+          <%= link_to recipient.name, conversation_messages_path(conversation)%>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="ui list">
+      <div class="item">
+        <% @conversations.each do |conversation| %>
+        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+        <% if conversation.sender_id == current_user.id %>
+        <% recipient = User.find(conversation.recipient_id) %>
+        <% else %>
+        <% recipient = User.find(conversation.sender_id) %>
+        <% end %>
+        <%= link_to recipient.name, conversation_messages_path(conversation)%>
+        <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+</section>
+
+
 
 <div class="ui segment">
   <h3>Your matches !</h3>
@@ -38,42 +77,42 @@
               <p>
                 <strong><%= user.name %></strong>
                 <br>
-                  <%=match.name%>
+                <%=match.name%>
               </p>
             </div>
+
+
             <nav class="navbar">
               <div class="navbar-left">
                 <a class="navbar-item">
-                  <span class="icon is-small"><i class="fa fa-reply"></i></span>
-                </a>
-                <a class="navbar-item">
-                  <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-                </a>
-                <a class="navbar-item">
-                  <span class="icon is-small"><i class="fa fa-heart"></i></span>
+                  <%= link_to conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' do %>
+                  <span class="icon is-small"><i class="fa fa-envelope"></i></span>
+                  <% end %>
                 </a>
               </div>
             </nav>
           </div>
         </article>
       </div>
-      <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%></br>
       <%end%>
       <% end %>
     </div>
   </div>
+</div>
 
-  <!--
+
+</body>
+<!--
 
 
-  <div class="ui segment">
-  <h3>All Users</h3>
-  <div class="ui list">
-  <% @users.each do |user| %>
-  <% if user.id != current_user.id %>
-  <div class="item">
-  <%= user.name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
-  <%= %>
+<div class="ui segment">
+<h3>All Users</h3>
+<div class="ui list">
+<% @users.each do |user| %>
+<% if user.id != current_user.id %>
+<div class="item">
+<%= user.name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+<%= %>
 </div>
 <% end %>
 <% end %>
