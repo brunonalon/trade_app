@@ -12,28 +12,33 @@
           <p class="menu-heading">
             My Items
           </p>
+          <% user = current_user
+             user_items = user.items
+             user_items.each {|item| %>
           <!-- <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-book"></i></span>bulma-website</a>
           <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-book"></i></span>bulma</a>
           <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-book"></i></span>marksheet</a>
           <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-book"></i></span>jgthms.github.io</a>
           <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-code-fork"></i></span>mojs</a>
           <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-book"></i></span>grumpy-cat</a> -->
-          <!-- <div class="menu-block">
+          <a class="menu-block" id="item-menu" data-item-id = "<%= item.id%>" data-thumb-picture="<%=item.picture_url.thumb.url%>" data-item-name="<%=item.name%>" href="#"><span class="menu-icon"><i class="image is-16x16"> <img src="<%=item.picture_url.mini.url %>" ></i></span><%= item.name%> </a>
+          <% } %>
+          <div class="menu-block">
           <button class="button is-primary is-outlined is-fullwidth">
-          Reset all filters
+          Add Item
         </button>
-      </div> -->
+      </div>
     </nav>
   </div>
   <div class="column is-auto" id="touchsurface2">
     <div class="media">
       <div class="media-left">
         <figure class="image is-64x64" id="smallItem">
-          <!-- <img id="itemImage2" src="/images/pane1.jpg" alt="Image"> -->
+          <img id="itemImage2" src="<%= user_items.first.picture_url.thumb.url if user_items.first%>" alt="Image">
         </figure>
       </div>
       <div class="media-content">
-        <p class="title is-5" id="itemTitle"></p>
+        <p class="tag is-info is-large" id="itemTitle">  </p>
       </div>
     </div>
     <div class="card is-fullwidth" id="inner">

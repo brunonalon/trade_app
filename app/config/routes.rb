@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
   resources :sessions, only: [:create, :destroy]
-  resources :users, only: [:new, :create, :destroy]
+  resources :users , only: [:new, :create, :destroy]
   root to: 'login#index'
   get 'login/index'
 
   resources :items
+  resources :likes
 
   get 'pages/home'
   # root'pages#home'

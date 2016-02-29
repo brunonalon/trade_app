@@ -1,37 +1,39 @@
 // var items = ['/images/pane1.jpg', '/images/pane2.jpg', '/images/pane3.jpg', '/images/pane4.jpg', '/images/pane5.jpg'];
 // var imgCounter = 1;
 var items;
-var itemClick = function(){
-asdasd;
+var imgCounter = 0;
+var item_offered_id ;
+var item_liked_id;
+var like_func = function(offered, liked){
+  $.post('/likes', {item_offered_id: offered, item_liked_id: liked }, function(data, textStatus, jqXHR)
+  {
+    //saved func
+  },"json").fail(function(jqXHR, textStatus, errorThrown)
+  {
+    //fail func
+  });
 };
 
+
 $(document).ready(function() {
-
-  $.getJSON('/items', null, function(data) {
-    items = data;
-    for (var i = 0; i < items.length; i++) {
-      minipic = items[i].picture_url.mini.url;
-      var itemname = items[i].name;
-      var smallItemImg = $('<img>').attr('src', items[i].picture_url.thumb.url);
-      var smallItemFigure = $('#smallItem');
-      var menu = $('<a class="menu-block" href="#"><span class="menu-icon"><i class="image is-16x16"> <img src='+minipic+'></i></span> '+itemname+'</a>').click(function(){
-
-        smallItemImg.appendTo(smallItemFigure);
-      });
-      var select = $(".menu");
-      menu.appendTo(select);
+  item_offered_id = $(".menu-block").data('item-id');
+  $.getJSON('/items', {filter: 1}, function(data) {
+    if (!data){
+      return false;
     }
-    // $("#itemTitle").text(items[0].name);
-    var smallItemImg = $('<img>').attr('src', items[0].picture_url.thumb.url);
-    var smallItemFigure = $('#smallItem');
-    smallItemImg.appendTo(smallItemFigure);
-
-    var bigItemImg = $('<img>').attr('src', items[0].picture_url.url);
-    var bigItemFigure = $('#bigItem');
-    bigItemImg.appendTo(bigItemFigure);
-
+    items = data;
+    $('#itemImage').attr('src', items[0].picture_url.url);
+    $("#itemTitle").text(items[0].name);
+    item_liked_id = items[0].id ;
+    imgCounter +=1;
   });
 
+  $(".menu-block").on("click", function(){
+    var small_pic = $(this).data('thumb-picture');
+    var small_item_title = $(this).data('item-name');
+    item_offered_id = $(this).data('item-id');
+    $('#itemImage2').attr('src', small_pic);
+  });
 
 
   if ($('#touchsurface2').length){
@@ -95,6 +97,7 @@ $(document).ready(function() {
   }
 
   $('#like').on('click', function(){
+    like_func(item_offered_id,item_liked_id);
     swipe('right');
   });
   $('#nope').on('click', function(){
@@ -104,7 +107,7 @@ $(document).ready(function() {
 
 function swipe(swipedir){
   if (swipedir != 'none'){
-    console.log(swipedir);
+
     if (swipedir =='left'){
 
       $('.cardstatus').addClass('dislike');
@@ -120,7 +123,6 @@ function swipe(swipedir){
           },750);
         }
       });
-      console.log(swipedir + "2");
     }
     if (swipedir =='right'){
       $('.cardstatus').addClass('like');
@@ -138,8 +140,16 @@ function swipe(swipedir){
       });
     }
     setTimeout(function(){
-      $('#itemImage').attr('src', items[imgCounter]);
-      $('#itemImage2').attr('src', items[imgCounter]);
+      if (!items){
+        return false;
+      }
+      if (imgCounter > items.length - 1){
+        imgCounter= 0
+      }
+
+      $('#itemImage').attr('src', items[imgCounter].picture_url.url);
+      $("#itemTitle").text(items[imgCounter].name);
+      item_liked_id = items[imgCounter].id ;
       $('.cardstatus').removeClass('like').removeClass('dislike');
       imgCounter += 1;
     }, 750);
