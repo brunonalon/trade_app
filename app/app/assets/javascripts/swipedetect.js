@@ -1,7 +1,39 @@
-var items = ['/images/pane1.jpg', '/images/pane2.jpg', '/images/pane3.jpg', '/images/pane4.jpg', '/images/pane5.jpg'];
-var imgCounter = 1;
+// var items = ['/images/pane1.jpg', '/images/pane2.jpg', '/images/pane3.jpg', '/images/pane4.jpg', '/images/pane5.jpg'];
+// var imgCounter = 1;
+var items;
+var itemClick = function(){
+asdasd;
+};
 
 $(document).ready(function() {
+
+  $.getJSON('/items', null, function(data) {
+    items = data;
+    for (var i = 0; i < items.length; i++) {
+      minipic = items[i].picture_url.mini.url;
+      var itemname = items[i].name;
+      var smallItemImg = $('<img>').attr('src', items[i].picture_url.thumb.url);
+      var smallItemFigure = $('#smallItem');
+      var menu = $('<a class="menu-block" href="#"><span class="menu-icon"><i class="image is-16x16"> <img src='+minipic+'></i></span> '+itemname+'</a>').click(function(){
+
+        smallItemImg.appendTo(smallItemFigure);
+      });
+      var select = $(".menu");
+      menu.appendTo(select);
+    }
+    // $("#itemTitle").text(items[0].name);
+    var smallItemImg = $('<img>').attr('src', items[0].picture_url.thumb.url);
+    var smallItemFigure = $('#smallItem');
+    smallItemImg.appendTo(smallItemFigure);
+
+    var bigItemImg = $('<img>').attr('src', items[0].picture_url.url);
+    var bigItemFigure = $('#bigItem');
+    bigItemImg.appendTo(bigItemFigure);
+
+  });
+
+
+
   if ($('#touchsurface2').length){
     function swipedetect(el, callback){
 

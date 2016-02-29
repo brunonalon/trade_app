@@ -12,5 +12,8 @@
     <%= f.label :remote_image_url, "or image URL" %><br />
     <%= f.text_field :remote_image_url %>
   </p>
+</div>
+  <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+<div>
   <p><%= f.submit %></p>
 <% end %>

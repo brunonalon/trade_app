@@ -1,8 +1,10 @@
 class CreateMessages < ActiveRecord::Migration
   def change
     create_table :messages do |t|
-      t.text :text
-      t.integer :user_sender_id, :user_receiver_id
+      t.text :body
+      t.references :conversation, index: true
+      t.references :user, index: true
+      t.boolean :read, :default => false
       t.timestamps
     end
   end
