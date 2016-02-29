@@ -1,34 +1,45 @@
 
 <% if @over_ten %>
-   <%= link_to 'Show Previous', '?m=all' %>
+<%= link_to 'Show Previous', '?m=all' %>
 <% end %>
 
 <div class="ui segment">
   <% @messages.each do |message| %>
-    <% if message.body %>
-      <% user = User.find(message.user_id) %>
-      <div class="item">
-        <div class="content">
-          <div class="header"><strong><%= user.name %></strong> <%= message.message_time %></div>
-          <div class="list">
-            <div class="item">
-              <i class="right triangle icon"></i>
-              <%= message.body %>
-            </div>
-          </div>
+  <% if message.body %>
+  <% user = User.find(message.user_id) %>
+  <div class="item">
+    <div class="content">
+      <div class="header"><strong><%= user.name%> </strong> &nbsp;<%=message.message_time %></div>
+      <div class="list">
+        <div class="item">
+          <i class="right triangle icon"></i>
+          <%= message.body %>
         </div>
       </div>
-    <% end %>
+    </div>
+  </div>
+  <% end %>
   <% end %>
 </div>
 
-<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
-  <div class="field">
-    <%= f.text_area :body, class: "form-control" %>
-  </div>
-    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-  <div>
-    <%= f.submit "Add Reply" %>
-  </div>
 
-<% end %>
+
+<article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg">
+    </p>
+  </figure>
+  <div class="media-content">
+    <p class="control">
+      <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+      <div class="field">
+        <%= f.text_area :body, class: "textarea", :placeholder => "Send a message..." %>
+      </div>
+    </p>
+    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %></br>
+    <div class="navbar-item">
+      <%= f.submit "Send Message", class: "button is-info" %>
+    </div>
+  </article>
+  <% end %>

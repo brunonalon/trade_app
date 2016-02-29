@@ -35,7 +35,14 @@ class User < ActiveRecord::Base
     c = a + b
     c
   end
-  
+  def get_nearby_items(distance)
+    items_near_me = []
+    users_near_me = self.nearbys(distance)
+    users_near_me.each do |user|
+      items_near_me << Item.find(user.id)
+    end
+    items_near_me
+  end
   def get_all_messages_by_user(user)
     user1_id = self.id
     user2_id = user.id
