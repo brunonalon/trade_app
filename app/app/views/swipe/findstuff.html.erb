@@ -3,6 +3,14 @@
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <title>Touch Slider</title>
+
+  <script type="text/javascript">
+  $( document ).ready(function() {
+    $(".tab1").addClass('is-active');
+  });
+  </script>
+
+
 </head>
 <body style= "zoom: 1;" id="items" data-user-id="<%= current_user.id %>" >
   <div class="container">
@@ -13,6 +21,7 @@
             Item up For Trade
           </p>
           <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-plus"></i></span><%=Item.find(session[:current_item]).name%></a>
+
 
           <div class="menu-block">
             <button class="button is-primary is-outlined is-fullwidth">
@@ -36,6 +45,7 @@
       <div class="card is-fullwidth" id="inner">
         <div class="cardstatus">
         </div>
+
         <figure class="card-image is-4x3" id="bigItem">
           <img id="itemImage"  >
         </figure>
@@ -45,6 +55,7 @@
               <div class="column is-half is-offset-quarter">
                 <a id="like" class="button is-success is-large"><i class="fa fa-check"></i>LIKE</a>
                 <a id="nope" class="button is-danger is-large"><i class="fa fa-times"></i>NOPE</a>
+
               </div>
             </div>
           </div>

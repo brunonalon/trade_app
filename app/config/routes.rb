@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # root'pages#home'
   get 'items/index'
   get 'swipe/findstuff'
+  get 'matches/index'
 
   resources :conversations do
     resources :messages
