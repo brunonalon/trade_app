@@ -14,5 +14,4 @@ class Item < ActiveRecord::Base
      result = Like.where("item_liked_id = ?", self.id).pluck(:item_offered_id)
      potential = Item.find(result)
   end
-
 end

@@ -17,11 +17,11 @@
       <div class="column is-2">
         <nav class="menu">
           <p class="menu-heading">
-            My Items
+            Item up For Trade
           </p>
-          <%@items.each do |item|%>
-          <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-book"></i></span><%=item.name%></a>
-          <%end%>
+
+          <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-plus"></i></span><%=Item.find(session[:current_item]).name%></a>
+
           <div class="menu-block">
             <button class="button is-primary is-outlined is-fullwidth">
               Reset all filters

@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
     myItems = Item.where(:user_id=>self.id)
     myItems
   end
+  # Displays the conversations with the matched users
   def get_all_user_conversations
     contacts_part_one = Match.where("user_liked_id = ?", self.id).pluck(:user_offered_id)
     contacts_part_two = Match.where("user_offered_id = ?", self.id).pluck(:user_liked_id)
@@ -32,6 +33,7 @@ class User < ActiveRecord::Base
     c = a + b
     c
   end
+  
   def get_all_messages_by_user(user)
     user1_id = self.id
     user2_id = user.id

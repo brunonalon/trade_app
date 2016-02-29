@@ -25,6 +25,7 @@
       <% if user.id != current_user.id %>
       <div class="item">
         <%= user.name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+        <%= %>
       </div>
       <% end %>
     <% end %>

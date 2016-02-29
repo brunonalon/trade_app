@@ -1,1 +1,30 @@
-<%=current_user.name%>
+<!--
+<p class="control">
+  <label class="label">Select Item Up for Trade</label>
+  <span class="select">
+       <%= select("post", "current_item", @items.collect {|i| [ i.name, i.id ] }, { include_blank: false }) %>
+  </span>
+</p>
+<p class="control">
+  <button class="button is-primary">Submit</button>
+  <button class="button">Cancel</button>
+</p> -->
+<!--
+<%= form_for :trade, url: {action: "index"}, html: {method: "get"} do |f| %>
+  <%= f.select(:current_item, options_for_select(@items.collect {|i| [ i.name, i.id ] })) %>
+  <%= f.submit "Go!" %>
+<% end %> -->
+
+
+
+<p class="control">
+  <label class="label">Select Item Up for Trade</label>
+  <span class="select">
+    <%= form_for :trade, url: {action: "index"}, html: {method: "get"} do |f| %>
+      <%= f.select(:current_item, options_for_select(@items.collect {|i| [ i.name, i.id ] })) %>
+      <%= f.submit "Go!" %>
+    <% end %>
+  </span>
+</p>
+
+<%=session[:current_item]%>
