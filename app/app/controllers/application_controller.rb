@@ -13,6 +13,12 @@ class ApplicationController < ActionController::Base
       @current_item = Item.where("id = ?", params[:trade][:current_item])
     end
   end
+  def restrict_access
+    if !current_user
+      flash[:alert] = "You must log in."
+      redirect_to new_session_path
+    end
+  end
   def ip_address
     "156.74.181.208"
   end

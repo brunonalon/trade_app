@@ -57,43 +57,41 @@
     <div class="modal-container">
       <div class="modal-content">
         <div class="box">
-        <article class="media">
-          <div class="media-left">
-            <figure class="image is-64x64">
-              <img src="http://placehold.it/128x128" alt="Image">
-            </figure>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-                <br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-              </p>
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="/images/fb-art.jpg" alt="Image">
+              </figure>
             </div>
-            <nav class="navbar">
-              <div class="navbar-left">
-                <a class="navbar-item">
-                  <span class="icon is-small"><i class="fa fa-reply"></i></span>
-                </a>
-                <a class="navbar-item">
-                  <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-                </a>
-                <a class="navbar-item">
-                  <span class="icon is-small"><i class="fa fa-heart"></i></span>
-                </a>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <div id="loginform">
+                    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+                  </p>
+                </div>
+                <nav class="navbar">
+                  <div class="navbar-left">
+                    <a class="navbar-item">
+                      <span class="icon is-small"><i class="fa fa-reply"></i></span>
+                    </a>
+                    <a class="navbar-item">
+                      <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+                    </a>
+                    <a class="navbar-item">
+                      <span class="icon is-small"><i class="fa fa-heart"></i></span>
+                    </a>
+                  </div>
+                </nav>
               </div>
-            </nav>
+            </article>
           </div>
-        </article>
+        </div>
       </div>
-      </div>
+
     </div>
 
-  </div>
+    <%= yield %>
 
-  <%= yield %>
-
-</body>
-</html>
+  </body>
+  </html>
