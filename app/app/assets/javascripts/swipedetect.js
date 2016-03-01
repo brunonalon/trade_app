@@ -32,7 +32,7 @@ $(document).ready(function() {
       return false;
     }
     items = data;
-    $('#itemImage').attr('src', items[0].url);
+    $('#itemImage').attr('src', items[0].picture_url.url);
     $("#itemTitle").text(items[0].name);
     item_liked_id = items[0].id ;
     imgCounter +=1;
@@ -165,7 +165,7 @@ function swipe(swipedir){
         imgCounter= 0
       }
 
-      $('#itemImage').attr('src', items[imgCounter].url);
+      $('#itemImage').attr('src', items[imgCounter].picture_url.url);
       $("#itemTitle").text(items[imgCounter].name);
       item_liked_id = items[imgCounter].id ;
       $('.cardstatus').removeClass('like').removeClass('dislike');

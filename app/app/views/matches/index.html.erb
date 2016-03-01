@@ -1,5 +1,63 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <title>Mailbox / Matches</title>
+
+  <script type="text/javascript">
+  $( document ).ready(function() {
+    $(".tab2").addClass('is-active');
+  });
+  </script>
+
+</head>
+
+<body>
+
+<section>
+  <div class="container">
+    <h1 class="title">Your Matches!!</h1>
+    <div class="columns">
+      <div class="column">
+        <% @items.each do |item| %>
+        <h2 class="subtitle"><%=item.name + ": "%></h2>
+        <%matches = item.get_all_item_matches%>
+        <%matches.each do |match|%>
+        <%user = User.find(match.user_id) %>
+        <div class="notification is-primary">
+          <div class="media">
+            <div class="media-left">
+              <img class="image is-64x64" src='<%=match.url%>' alt="Image">
+            </div>
+            <div class="media-left">
+              <p>
+                <strong><%= user.name %></strong>
+                <br>
+                <%=match.name%>
+              </p>
+            <!-- </div>
+            <div class="media-left"> -->
+              <%= link_to conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' do %>
+              <span class="icon is-medium"><i class="fa fa-envelope"></i></span>
+              <% end %>
+            </a>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+</section>
+
+
+
+
+</body>
+<!-- <!DOCTYPE html>
+<html>
 
 <head>
 
@@ -44,4 +102,4 @@
   </div>
 
 </body>
-</html>
+</html> -->

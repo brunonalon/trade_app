@@ -16,6 +16,7 @@ namespace :db do
         samps = Urss.at("http://www.degraeve.com/flickr-rss/rss.php?tags=cars%2C+bikes%2C&tagmode=all&sort=relevance&num=25")
         sam = samps.entries.map{ |entry| entry.medias.collect(&:content_url) }.flatten
         item.url = sam.shuffle.sample
+        item.description = "I am looking to trade this brand new " + item.name
       end
     end
     @lastone = User.last.id

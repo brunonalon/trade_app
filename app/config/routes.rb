@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   get 'items/index'
   get 'swipe/findstuff'
   get 'matches/index'
-
+  resources :matches do
+    resources :messages
+  end
   resources :conversations do
     resources :messages
   end
