@@ -2,9 +2,15 @@ class ItemsController < ApplicationController
   respond_to :json, :html
   def index
     if current_user
-      @item = current_user.items
-      @item = Item.new unless @item
-      respond_with(@item )
+      # @item = current_user.items
+      # @item = Item.new unless @item
+      if params[:filter] = 1
+        @item = Item.where('user_id <> ? ', current_user.id)
+      else
+        @item = Item.all
+      end
+      respond_with(@item)
+      # @item = Item.new
     else
       redirect_to root_url
     end

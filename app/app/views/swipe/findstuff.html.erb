@@ -1,7 +1,9 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
   <title>Find Stuff</title>
 
   <script type="text/javascript">
@@ -18,52 +20,51 @@
       <div class="column is-2">
         <nav class="menu">
           <p class="menu-heading">
-            Item up For Trade
+            My Items
           </p>
-          <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-plus"></i></span><%=Item.find(session[:current_item]).name%></a>
-
-
-          <div class="menu-block">
-            <button class="button is-primary is-outlined is-fullwidth">
-              Reset all filters
-            </button>
-          </div>
-        </nav>
-      </nav>
-    </div>
-    <div class="column is-auto" id="touchsurface2">
-      <div class="media">
-        <div class="media-left">
-          <figure class="image is-64x64" id="smallItem">
-            <!-- <img id="itemImage2" src="/images/pane1.jpg" alt="Image"> -->
-          </figure>
+          <% user = current_user
+          user_items = user.items
+          user_items.each {|item| %>
+            <a class="menu-block" id="item-menu" data-item-id = "<%= item.id%>" data-thumb-picture="<%=item.url%>" data-item-name="<%=item.name%>" href="#"><span class="menu-icon"><i class="image is-16x16"> <img src="<%=item.url %>" ></i></span><%= item.name%> </a>
+            <% } %>
+            <div class="menu-block">
+              <button class="button is-primary is-outlined is-fullwidth">
+                Add Item
+              </button>
+            </div>
+          </nav>
         </div>
-        <div class="media-content">
-          <p class="title is-5" id="itemTitle"></p>
-        </div>
-      </div>
-      <div class="card is-fullwidth" id="inner">
-        <div class="cardstatus">
-        </div>
-
-        <figure class="card-image is-4x3" id="bigItem">
-          <img id="itemImage"  >
-        </figure>
-        <div class="card-content">
-          <div class="content">
-            <div class="columns">
-              <div class="column is-half is-offset-quarter">
-                <a id="like" class="button is-success is-large"><i class="fa fa-check"></i>LIKE</a>
-                <a id="nope" class="button is-danger is-large"><i class="fa fa-times"></i>NOPE</a>
-
-              </div>
+        <div class="column is-auto" id="touchsurface2">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-64x64" id="smallItem">
+                <img id="itemImage2" src="<%= user_items.first.url if user_items.first%>" alt="Image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="tag is-info is-large" id="itemTitle">  </p>
             </div>
           </div>
+          <div class="card is-fullwidth" id="inner">
+            <div class="cardstatus">
+            </div>
+            <figure class="card-image is-4x3" id="bigItem">
+              <img id="itemImage"  >
+            </figure>
+            <div class="card-content">
+              <div class="content">
+                <div class="columns">
+                  <div class="column is-half is-offset-quarter">
+                    <a id="like" class="button is-success is-large"><i class="fa fa-check"></i>LIKE</a>
+                    <a id="nope" class="button is-danger is-large"><i class="fa fa-times"></i>NOPE</a>
+                  </div>
+                </div>
+              </div>
 
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
-</body>
-</html>
+    </body>
+    </html>

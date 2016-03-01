@@ -18,11 +18,14 @@ namespace :db do
         item.url = sam.shuffle.sample
       end
     end
-    Match.populate 30 do |match|
-      match.item_offered_id = 21
-      match.item_liked_id = Faker::Number.between(1, 20)
-      match.user_offered_id = match.item_offered_id
-      match.user_liked_id = match.item_liked_id
+    @lastone = User.last.id
+    [1,2,3].each do |i|
+      Match.populate 30 do |match|
+        match.item_offered_id = User.last.id + i
+        match.item_liked_id = Faker::Number.between(1, 20)
+        match.user_offered_id = match.item_offered_id
+        match.user_liked_id = match.item_liked_id
+      end
     end
   end
 end
