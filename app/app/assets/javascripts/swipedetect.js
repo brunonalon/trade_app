@@ -14,6 +14,16 @@ var like_func = function(offered, liked){
   });
 };
 
+var dislike_func = function(offered, liked){
+  $.post('/likes', {item_offered_id: offered, item_liked_id: liked }, function(data, textStatus, jqXHR)
+  {
+    //saved func
+  },"json").fail(function(jqXHR, textStatus, errorThrown)
+  {
+    //fail func
+  });
+};
+
 
 $(document).ready(function() {
   item_offered_id = $(".menu-block").data('item-id');
@@ -34,6 +44,13 @@ $(document).ready(function() {
     item_offered_id = $(this).data('item-id');
     $('#itemImage2').attr('src', small_pic);
   });
+  $("#button-add-item").on("click", function(){
+    $( "#item-modal" ).addClass("is-active");
+  });
+  $("#item-modal-close").on("click", function(){
+    $("#item-modal").removeClass("is-active");
+  });
+
 
 
   if ($('#touchsurface2').length){
@@ -101,6 +118,7 @@ $(document).ready(function() {
     swipe('right');
   });
   $('#nope').on('click', function(){
+    dislike_func(item_offered_id,item_liked_id);
     swipe('left');
   });
 });

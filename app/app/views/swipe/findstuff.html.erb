@@ -15,16 +15,10 @@
           <% user = current_user
              user_items = user.items
              user_items.each {|item| %>
-          <!-- <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-book"></i></span>bulma-website</a>
-          <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-book"></i></span>bulma</a>
-          <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-book"></i></span>marksheet</a>
-          <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-book"></i></span>jgthms.github.io</a>
-          <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-code-fork"></i></span>mojs</a>
-          <a class="menu-block" href="#"><span class="menu-icon"><i class="fa fa-book"></i></span>grumpy-cat</a> -->
           <a class="menu-block" id="item-menu" data-item-id = "<%= item.id%>" data-thumb-picture="<%=item.picture_url.thumb.url%>" data-item-name="<%=item.name%>" href="#"><span class="menu-icon"><i class="image is-16x16"> <img src="<%=item.picture_url.mini.url %>" ></i></span><%= item.name%> </a>
           <% } %>
           <div class="menu-block">
-          <button class="button is-primary is-outlined is-fullwidth">
+          <button class="button is-primary is-outlined is-fullwidth" id="button-add-item">
           Add Item
         </button>
       </div>
@@ -61,6 +55,6 @@
     </div>
   </div>
 </div>
-
+<%= render 'form' %>
 </body>
 </html>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :items
   resources :likes
+  resources :dislikes
 
   get 'pages/home'
   # root'pages#home'

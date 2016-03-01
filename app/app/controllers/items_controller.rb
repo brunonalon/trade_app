@@ -10,7 +10,6 @@ class ItemsController < ApplicationController
         @item = Item.all
       end
       respond_with(@item)
-      # @item = Item.new
     else
       redirect_to root_url
     end
@@ -18,8 +17,9 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.user_id = current_user.id 
     if @item.save
-      redirect_to items_path
+      redirect_to :back
     end
   end
 
