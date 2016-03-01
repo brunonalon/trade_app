@@ -1,7 +1,6 @@
 class ConversationsController < ApplicationController
   # before_action :authenticate_user
   def index
-    #@users = User.all
     @users = current_user.get_all_user_conversations
     @items = current_user.get_all_user_items
     @conversations = Conversation.all
