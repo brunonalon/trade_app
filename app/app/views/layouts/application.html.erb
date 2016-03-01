@@ -36,21 +36,22 @@
     <div class="hero-footer">
       <nav class="tabs is-boxed">
         <div class="container">
-          <ul>
-            <li class="tab1">
-              <%= link_to 'Find Stuff', items_path%>
-            </li>
-            <li class="tab2">
-              <a href="/matches">Matches</a>
-            </li>
-            <li class="tab3">
-              <a href="/conversations">Messages</a>
-            </li>
-            <li class="tab3">
-              <a href="/users">My Profile</a>
-              <%= link_to 'My Profile', users_path%>
-            </li>
-          </ul>
+          <div class="tabs">
+            <ul>
+              <li class="tab1">
+                <%= link_to 'Find Stuff', items_path%>
+              </li>
+              <li class="tab2">
+                <a href="/matches">Matches</a>
+              </li>
+              <li class="tab3">
+                <a href="/conversations">Messages</a>
+              </li >
+              <li class="tab4">
+                <%= link_to 'My Profile', users_path%>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </div>

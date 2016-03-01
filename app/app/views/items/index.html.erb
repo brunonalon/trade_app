@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <title>Find Stuff</title>
+
+  <script type="text/javascript">
+  $( document ).ready(function() {
+    $(".tab1").addClass('is-active');
+  });
+  </script>
+
 </head>
 <body style= "zoom: 1;" id="items" data-user-id="<%= current_user.id %>" >
   <div class="container">
@@ -31,7 +39,7 @@
                 <img id="itemImage2" src="<%= user_items.first.picture_url.thumb.url if user_items.first%>" alt="Image">
               </figure>
             </div>
-            
+
         </div>
         <div class="notification is-primary">
           <h1 class="title is-2" id="itemTitle"> </h1>
