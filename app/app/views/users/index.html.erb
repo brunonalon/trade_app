@@ -1,0 +1,14 @@
+
+
+
+<p class="control">
+  <label class="label">Select Item Up for Trade</label>
+  <span class="select">
+    <%= form_for :trade, url: {action: "index"}, html: {method: "get"} do |f| %>
+      <%= f.select(:current_item, options_for_select(@items.collect {|i| [ i.name, i.id ] })) %>
+      <%= f.submit "Go!" %>
+    <% end %>
+  </span>
+</p>
+
+<%=session[:current_item]%>

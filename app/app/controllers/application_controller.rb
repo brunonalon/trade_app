@@ -5,10 +5,20 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_user
-    #session[:user_id] = nil
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
-
+  def current_item
+    if(params.has_key?(:trade))
+      session[:current_item] = params[:trade][:current_item]
+      @current_item = Item.where("id = ?", params[:trade][:current_item])
+    end
+  end
+  def restrict_access
+    if !current_user
+      flash[:alert] = "You must log in."
+      redirect_to new_session_path
+    end
+  end
   def ip_address
     "156.74.181.208"
   end
