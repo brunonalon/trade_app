@@ -5,23 +5,24 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
   resources :sessions, only: [:create, :destroy]
-  resources :users , only: [:new, :create, :destroy]
+  resources :users , only: [:new, :create, :destroy, :index]
 
   root to: 'login#index'
-  get 'login/index'
+  # get 'login/index'
 
   resources :items
-
-  get 'users/index'
-
   resources :likes
   resources :dislikes
+  resources :matches
+  # get 'users/index'
 
-  get 'pages/home'
-  # root'pages#home'
-  get 'items/index'
-  get 'swipe/findstuff'
-  get 'matches/index'
+
+
+  # get 'pages/home'
+  # # root'pages#home'
+  # get 'items/index'
+  # get 'swipe/findstuff'
+  # get 'matches/index'
 
   resources :conversations do
     resources :messages
