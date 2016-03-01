@@ -32,8 +32,10 @@ $(document).ready(function() {
       return false;
     }
     items = data;
-    $('#itemImage').attr('src', items[0].url);
+    $('#itemImage').attr('src', items[0].picture_url.url);
     $("#itemTitle").text(items[0].name);
+    $("#itemDescription").text(items[0].description);
+
     item_liked_id = items[0].id ;
     imgCounter +=1;
   });
@@ -165,8 +167,10 @@ function swipe(swipedir){
         imgCounter= 0
       }
 
-      $('#itemImage').attr('src', items[imgCounter].url);
+      $('#itemImage').attr('src', items[imgCounter].picture_url.url);
       $("#itemTitle").text(items[imgCounter].name);
+      $("#itemDescription").text(items[imgCounter].description);
+
       item_liked_id = items[imgCounter].id ;
       $('.cardstatus').removeClass('like').removeClass('dislike');
       imgCounter += 1;

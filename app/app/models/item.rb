@@ -5,6 +5,17 @@ class Item < ActiveRecord::Base
   has_many :matches, foreign_key: "item_offered_id", dependent: :destroy
   mount_uploader :picture_url, ImageUploader
 
+
+   def self.test
+    items = Item.all
+
+    items.each{|item|
+      item.remote_picture_url_url = item.url
+      item.save
+    }
+
+
+  end
   def get_all_item_matches
     result_id = []
     item_matches = Match.where("item_offered_id = ? or item_liked_id = ?", self.id, self.id)
