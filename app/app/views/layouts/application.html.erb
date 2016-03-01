@@ -13,7 +13,7 @@
       <header class="header">
         <div class="container">
           <div class="header-left">
-            <h1 class="title">BINDER</h1>
+            <h1 class="title">BARTR</h1>
             <h2 class="subtitle my-subtitle">Trade Stuff, locally and fast.</h2>
           </div>
           <span id="header-toggle" class="header-toggle">
@@ -38,7 +38,7 @@
         <div class="container">
           <ul>
             <li class="tab1">
-              <a href="/swipe/findstuff">Find Stuff</a>
+              <%= link_to 'Find Stuff', items_path%>
             </li>
             <li class="tab2">
               <a href="/matches">Matches</a>
@@ -46,8 +46,9 @@
             <li class="tab3">
               <a href="/conversations">Messages</a>
             </li>
-            <li class="tab4">
+            <li class="tab3">
               <a href="/users">My Profile</a>
+              <%= link_to 'My Profile', users_path%>
             </li>
           </ul>
         </div>

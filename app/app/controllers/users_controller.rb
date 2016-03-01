@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     redirect_to root_url
   end
   def index
+    @user = current_user
     @items = current_user.get_all_user_items
     @current_item = current_item
   end

@@ -1,5 +1,4 @@
-// var items = ['/images/pane1.jpg', '/images/pane2.jpg', '/images/pane3.jpg', '/images/pane4.jpg', '/images/pane5.jpg'];
-// var imgCounter = 1;
+
 var items;
 var imgCounter = 0;
 var item_offered_id ;
@@ -26,6 +25,7 @@ var dislike_func = function(offered, liked){
 
 
 $(document).ready(function() {
+  console.log('test');
   item_offered_id = $(".menu-block").data('item-id');
   $.getJSON('/items', {filter: 1}, function(data) {
     if (!data){
@@ -34,6 +34,8 @@ $(document).ready(function() {
     items = data;
     $('#itemImage').attr('src', items[0].picture_url.url);
     $("#itemTitle").text(items[0].name);
+    $("#itemDescription").text(items[0].description);
+
     item_liked_id = items[0].id ;
     imgCounter +=1;
   });
@@ -167,6 +169,8 @@ function swipe(swipedir){
 
       $('#itemImage').attr('src', items[imgCounter].picture_url.url);
       $("#itemTitle").text(items[imgCounter].name);
+      $("#itemDescription").text(items[imgCounter].description);
+
       item_liked_id = items[imgCounter].id ;
       $('.cardstatus').removeClass('like').removeClass('dislike');
       imgCounter += 1;
