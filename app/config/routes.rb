@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'users/index'
 
   resources :likes
+  resources :dislikes
 
   get 'pages/home'
   # root'pages#home'
