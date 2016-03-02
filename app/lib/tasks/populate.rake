@@ -3,7 +3,6 @@ namespace :db do
   task :populate => :environment do
     require 'populator'
     require 'faker'
-<<<<<<< HEAD
     [User, Item, Conversation, Like, Match, Message].each(&:delete_all)
     User.populate 20 do |user|
       user.name = Faker::Name.name
@@ -28,7 +27,6 @@ namespace :db do
         match.user_offered_id = match.item_offered_id
         match.user_liked_id = match.item_liked_id
       end
-=======
     # [User, Item, Conversation, Like, Match, Message].each(&:delete_all)
     # User.populate 20 do |user|
     #   user.name = Faker::Name.name
@@ -60,7 +58,6 @@ namespace :db do
       samps = Urss.at("http://www.degraeve.com/flickr-rss/rss.php?tags=cars%2C+bikes%2C&tagmode=all&sort=relevance&num=25")
       sam = samps.entries.map{ |entry| entry.medias.collect(&:content_url) }.flatten
       item.url = sam.shuffle.sample
->>>>>>> a7e17f7fe9e88a12824710857f254530822c1caa
     end
 
   end

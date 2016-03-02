@@ -3,31 +3,24 @@
 <%= link_to 'Show Previous', '?m=all' %>
 <% end %>
 ​
-<section>
-  <div class="container">
-    <h1 class="title">Mailbox</h1>
-    <div class="columns">
-      <div class="column">
-        <% @conversations.each do |conversation| %>
-        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-        <% if conversation.sender_id == current_user.id %>
-        <div class="notification is-info">
-          <% recipient = User.find(conversation.recipient_id) %>
-          <%= link_to recipient.name, conversation_messages_path(conversation)%>
+<div class="ui segment">
+  <% @messages.each do |message| %>
+    <% if message.body %>
+      <% user = User.find(message.user_id) %>
+      <div class="item">
+        <div class="content">
+          <div class="header"><strong><%= user.name %></strong> <%= message.message_time %></div>
+          <div class="list">
+            <div class="item">
+              <i class="right triangle icon"></i>
+              <%= message.body %>
+            </div>
+          </div>
         </div>
-        <% else %>
-        <div class="notification is-info">
-        <% recipient = User.find(conversation.sender_id) %>
-        <%= link_to recipient.name, conversation_messages_path(conversation)%>
       </div>
-      <% end %>
-        <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
+    <% end %>
+  <% end %>
 </div>
-</section>
 
 <article class="media">
   <figure class="media-left">
