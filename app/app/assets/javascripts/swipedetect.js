@@ -7,6 +7,10 @@ var like_func = function(offered, liked){
   $.post('/likes', {item_offered_id: offered, item_liked_id: liked }, function(data, textStatus, jqXHR)
   {
     //saved func
+    var match = data;
+    if (match){
+      $( "#message-modal" ).addClass("is-active");
+    }
   },"json").fail(function(jqXHR, textStatus, errorThrown)
   {
     //fail func
@@ -51,6 +55,9 @@ $(document).ready(function() {
   });
   $("#item-modal-close").on("click", function(){
     $("#item-modal").removeClass("is-active");
+  });
+  $("#message-modal-close").on("click", function(){
+    $("#message-modal").removeClass("is-active");
   });
 
 

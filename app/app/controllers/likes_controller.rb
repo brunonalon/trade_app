@@ -5,7 +5,7 @@ class LikesController < ApplicationController
   def create
     @like = Like.new({item_offered_id: params['item_offered_id'], item_liked_id: params['item_liked_id']})
     if @like.save
-      render json: @like
+      render json: @like.check_matches
     end
   end
 
