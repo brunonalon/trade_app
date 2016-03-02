@@ -1,17 +1,17 @@
 class ItemsController < ApplicationController
   respond_to :json, :html
   def index
-    if current_user
-      if params[:filter] = 1
-        @item = Item.where('user_id <> ? ', current_user.id)
-      else
-        @item = Item.all
-      end
-      respond_with(@item)
-    else
-      redirect_to root_url
-    end
-  end
+   if current_user
+     if params[:filter] == '1'
+       @item = Item.where('user_id <> ? ', current_user.id)
+     elsif params[:filter] == '2'
+       @item = current_user.get_nearby_items(params[:distance])
+     end
+     respond_with(@item)
+   else
+     redirect_to root_url
+   end
+ end
 
   def create
     @item = Item.new(item_params)

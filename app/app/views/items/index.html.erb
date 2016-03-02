@@ -23,7 +23,7 @@
           <% user = current_user
           user_items = user.items
           user_items.each {|item| %>
-            <a class="menu-block" id="item-menu" data-item-id = "<%= item.id%>" data-thumb-picture="<%=item.picture_url.thumb.url%>" data-item-name="<%=item.name%>" href="#"><span class="menu-icon"><i class="image is-16x16"> <img src="<%=item.picture_url.mini.url %>" ></i></span><%= item.name%> </a>
+            <a class="menu-block" id="item-menu" data-item-desc = "<%= item.description%>" data-item-id = "<%= item.id%>" data-thumb-picture="<%=item.picture_url.thumb.url%>" data-item-name="<%=item.name%>" href="#"><span class="menu-icon"><i class="image is-16x16"> <img src="<%=item.picture_url.mini.url %>" ></i></span><%= item.name%> </a>
             <% } %>
             <div class="menu-block">
               <button class="button is-primary is-outlined is-fullwidth" id="button-add-item">
@@ -41,6 +41,10 @@
             </div>
 
         </div>
+        <div class="range range-primary">
+            <input id="slider" type="range" name="range" min="1" max="100" value="50" onchange="rangePrimary.value=value">
+            <output id="rangePrimary">50</output>
+          </div>
         <div class="notification is-primary">
           <h1 class="title is-2" id="itemTitle"> </h1>
           <p id="itemDescription"> </p>
