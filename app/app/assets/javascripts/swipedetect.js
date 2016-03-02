@@ -3,13 +3,16 @@ var items;
 var imgCounter = 0;
 var item_offered_id ;
 var item_liked_id;
+var item_liked_url;
 var like_func = function(offered, liked){
   $.post('/likes', {item_offered_id: offered, item_liked_id: liked }, function(data, textStatus, jqXHR)
   {
     //saved func
     var match = data;
     if (match){
-      $( "#message-modal" ).addClass("is-active");
+      $('#match-offered-item').attr('src', $('#itemImage2').attr('src'));
+      $('#match-liked-item').attr('src', item_liked_url);
+      $( "#match-modal" ).addClass("is-active");
     }
   },"json").fail(function(jqXHR, textStatus, errorThrown)
   {
@@ -29,7 +32,6 @@ var dislike_func = function(offered, liked){
 
 
 $(document).ready(function() {
-  console.log('test');
   item_offered_id = $(".menu-block").data('item-id');
   $.getJSON('/items', {filter: 1}, function(data) {
     if (!data){
@@ -56,8 +58,8 @@ $(document).ready(function() {
   $("#item-modal-close").on("click", function(){
     $("#item-modal").removeClass("is-active");
   });
-  $("#message-modal-close").on("click", function(){
-    $("#message-modal").removeClass("is-active");
+  $("#match-modal-close").on("click", function(){
+    $("#match-modal").removeClass("is-active");
   });
 
 
@@ -179,6 +181,7 @@ function swipe(swipedir){
       $("#itemDescription").text(items[imgCounter].description);
 
       item_liked_id = items[imgCounter].id ;
+      item_liked_url = items[imgCounter].picture_url.url ;
       $('.cardstatus').removeClass('like').removeClass('dislike');
       imgCounter += 1;
     }, 750);
