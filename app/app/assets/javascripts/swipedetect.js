@@ -50,12 +50,12 @@ $(document).ready(function() {
   $('#slider').on('change', function(){
     var distance = rangePrimary.value;
 
-    $.getJSON('/items', {filter: 2, distance: 500}, function(data) {
+    $.getJSON('/items', {filter: 2, distance: distance}, function(data) {
       if (!data){
         return false;
       }
-      items = data[0];
-
+      items = data;
+      debugger
       $('#itemImage').attr('src', items[0].picture_url.url);
       $("#itemTitle").text(items[0].name);
       $("#itemDescription").text(items[0].description);
