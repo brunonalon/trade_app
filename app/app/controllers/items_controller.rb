@@ -2,10 +2,11 @@ class ItemsController < ApplicationController
   respond_to :json, :html
   def index
     if current_user
-      if params[:filter] = 1
+      if params[:filter] == '1'
         @item = Item.where('user_id <> ? ', current_user.id)
-      else
-        @item = Item.all
+      elsif params[:filter] == '2'
+        @item = current_user.get_nearby_items(params[:distance])
+        puts "executed filter 2"
       end
       respond_with(@item)
     else
