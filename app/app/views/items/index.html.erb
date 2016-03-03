@@ -3,18 +3,15 @@
 
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
- <%= stylesheet_link_tag 'bulma' %>
-  <title>Find Stuff</title>
+  <title>Conversation</title>
 
-  <!-- <script type="text/javascript">
-  $( document ).ready(function() {
-    $(".tab1").addClass('is-active');
-  });
-  </script> -->
+
 
 </head>
 <body style= "zoom: 1;" id="items" data-user-id="<%= current_user.id %>" >
   <div class="container">
+    <h2 class="subtitle is-2"><i class="fa fa-search"></i> Find Items</h2>
+
     <div class="columns">
       <div class="column is-2">
         <nav class="menu">

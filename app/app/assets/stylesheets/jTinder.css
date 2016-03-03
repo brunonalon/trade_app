@@ -116,7 +116,7 @@ body {
     padding: 70px 0px;
 }
 
-.range {
+/*.range {
     display: table;
     position: relative;
     height: 25px;
@@ -269,7 +269,7 @@ body {
 }
 .range.range-danger input[type="range"] {
     outline-color: rgb(217, 83, 79);
-}
+}*/
 #touchsurface2 {
   overflow: hidden;
 }
@@ -283,9 +283,9 @@ body {
   margin-left: 5px;
 }
 
-.fa-envelope {
+/*.fa-envelope {
   color: white;
-}
+}*/
 
 .notification.is-info {
   background-color: lightgrey;

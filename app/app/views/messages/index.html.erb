@@ -1,25 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <title>Conversation</title>
 
+
+</head>
+<body>
 <% if @over_ten %>
 <%= link_to 'Show Previous', '?m=all' %>
 <% end %>
-​
-<div class="ui segment">
-  <% @messages.each do |message| %>
-    <% if message.body %>
-      <% user = User.find(message.user_id) %>
-      <div class="item">
-        <div class="content">
-          <div class="header"><strong><%= user.name %></strong> <%= message.message_time %></div>
-          <div class="list">
-            <div class="item">
-              <i class="right triangle icon"></i>
-              <%= message.body %>
+​  <div class="container">
+  <h2 class="subtitle is-2"><i class="fa fa-comments-o"></i> Conversation</h2>
+
+  <div class="columns">
+    <div class="column">
+      <div class="ui segment">
+        <% @messages.each do |message| %>
+        <% if message.body %>
+        <% user = User.find(message.user_id) %>
+        <div class="item">
+          <div class="content">
+            <div class="header"><strong><%= user.name %><strong></strong> <%= message.message_time %></div>
+            <div class="list">
+              <div class="item">
+                <i class="right triangle icon"></i>
+                <%= message.body %>
+              </div>
             </div>
           </div>
         </div>
+        <% end %>
+        <% end %>
       </div>
-    <% end %>
-  <% end %>
+    </div>
+  </div>
 </div>
 
 <article class="media">
@@ -41,3 +56,4 @@
     </div>
   </article>
   <% end %>
+</body>
