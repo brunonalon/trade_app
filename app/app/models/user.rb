@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   def get_nearby_items(distance)
     d = distance.to_i * 50
     items_near_me = []
-    users_near_me = self.nearbys(d)
+    users_near_me = self.nearbys(d).reverse
     users_near_me.each do |user|
       items_near_me << Item.where('user_id = ?', user.id).first
     end

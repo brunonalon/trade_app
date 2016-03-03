@@ -83,18 +83,25 @@ $(document).ready(function() {
     item_liked_id = items[0].id ;
     imgCounter +=1;
   });
-  $.getJSON('/items', {filter: 2, distance: 500}, function(data) {
-    if (!data){
-      return false;
-    }
-    items = data;
-    $('#itemImage').attr('src', items[0].picture_url.url);
-    $("#itemTitle").text(items[0].name);
-    $("#itemDescription").text(items[0].description);
+  $('#slider').on('change', function(){
+      var distance = rangePrimary.value;
 
-    item_liked_id = items[0].id ;
-    imgCounter +=1;
-  });
+      $.getJSON('/items', {filter: 2, distance: distance}, function(data) {
+        if (!data){
+          return false;
+        }
+        items = data;
+        debugger
+        $('#itemImage').attr('src', items[0].picture_url.url);
+        $("#itemTitle").text(items[0].name);
+        $("#itemDescription").text(items[0].description);
+        // item_liked_id = items[0].id ;
+        imgCounter = 1;
+
+      });
+
+    });
+
   $(".menu-block").on("click", function(){
     var small_pic = $(this).data('thumb-picture');
     var small_item_title = $(this).data('item-name');

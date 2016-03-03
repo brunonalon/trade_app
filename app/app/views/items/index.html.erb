@@ -3,6 +3,7 @@
 
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+ <%= stylesheet_link_tag 'bulma' %>
   <title>Find Stuff</title>
 
   <!-- <script type="text/javascript">
@@ -18,7 +19,8 @@
       <div class="column is-2">
         <nav class="menu">
           <p class="menu-heading">
-            My Items
+            <i class="fa fa-exchange"></i> My Items
+
           </p>
           <% user = current_user
           user_items = user.items
@@ -41,10 +43,11 @@
             </div>
         </div>
         <div class="range range-primary">
+            <label for="slider">Distance  <i class="fa fa-map-marker fa-lg"></i></label>
             <input id="slider" type="range" name="range" min="1" max="100" value="50" onchange="rangePrimary.value=value">
-            <output id="rangePrimary">50</output>
+            <output id="rangePrimary">50</output>Km
           </div>
-        <div class="notification is-primary">
+        <div class="notification is-primary" style="margin-top: 20px">
           <h1 class="title is-2" id="itemTitle"> </h1>
           <p id="itemDescription"> </p>
 
